@@ -5,4 +5,4 @@ cmake ..
 cmake --build .
 ./test_algebraic
 ./test_structural
-./test_iterated 2>out && sort out | uniq
+./test_combinatorial 2>&1 | grep -i "error" | sort | uniq -d

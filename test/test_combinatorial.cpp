@@ -28,7 +28,7 @@
  * (which it does, unless errors arise), but rather explore and expose the presence of errors. 
  * 
  * To inspect the different errors that are thrown we direct stderr onto a file and print single errors with the uniq command
- * as the output is cumbersome and repetitive. (./test_iterated 2>&1 | grep -i "error" | sort | uniq -d)
+ * as the output is cumbersome and repetitive. (./test_combinatorial 2>&1 | grep -i "error" | sort | uniq -d)
  * 
  * @note Causes error 1 -> Element-wise multiplication of ones detected
  * @note Causes error 2 -> Matrix A contains the number 7
