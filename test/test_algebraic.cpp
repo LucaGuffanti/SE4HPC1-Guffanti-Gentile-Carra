@@ -155,7 +155,7 @@ TEST(AlgebraicMultiplyMatrices, Associativity_ExpectedAssociative_1_3)
 TEST(AlgebraicMultiplyMatrices, NotPermittedMultiplication_ExpectedUnknownBehavior_1_4)
 {
     std::vector<std::vector<int>> A = {
-        {15}
+        {17}
     };
 
     std::vector<std::vector<int>> B = {
@@ -168,7 +168,210 @@ TEST(AlgebraicMultiplyMatrices, NotPermittedMultiplication_ExpectedUnknownBehavi
     ASSERT_DEATH_IF_SUPPORTED(multiplyMatrices(A, B, C, 1, 1, 3), "");
 };
 
+/**
+ * @brief Tests matrix multiplication behavior when matrices have even dimensions
+ * 
+ * @note Causes error 7 -> Result matrix contains a number between 11 and 20
+ * @note Causes error 12 -> The number of rows in A is equal to the number of columns in B
+ * @note Causes error 14 -> The result matrix C has an even number of rows
+ * @note Causes error 18 -> Matrix A is a square matrix
+ * 
+ */
+TEST(AlgebraicMultiplyMatrices, EvenEven_1_5_1)
+{
+    std::vector<std::vector<int>> A = {
+        {1, 2},
+        {3, 4}
+    };
 
+    std::vector<std::vector<int>> B = {
+        {5, 6},
+        {7, 8}
+    };
+
+    std::vector<std::vector<int>> C(2, std::vector<int>(2, 0));
+
+    std::vector<std::vector<int>> expected = {
+        {19, 22},
+        {43, 50}
+    };
+    multiplyMatrices(A, B, C, 2, 2, 2);
+
+    ASSERT_EQ(C, expected) << "Matrix multiplication test failed";
+}
+
+/**
+ * @brief Tests matrix multiplication behavior when matrices have even and odd dimensions
+ * 
+ * @note Causes error 14 -> The result matrix C has an even number of rows
+ * @note Causes error 16 -> Matrix B contains the number 6
+ * @note Causes error 18 -> Matrix A is a square matrix
+ */
+TEST(AlgebraicMultiplyMatrices, EvenOdd_1_5_2)
+{
+    std::vector<std::vector<int>> A = {
+        {1, 2},
+        {3, 4}
+    };
+
+    std::vector<std::vector<int>> B = {
+        {5, 6, 7},
+        {8, 9, 10}
+    };
+
+    std::vector<std::vector<int>> C(2, std::vector<int>(3, 0));
+    std::vector<std::vector<int>> expected = {
+        {21, 24, 27},
+        {47, 54, 61}
+    };
+
+    multiplyMatrices(A, B, C, 2, 2, 3);
+    ASSERT_EQ(C, expected) << "Matrix multiplication test failed";
+}
+
+
+/**
+ * @brief Tests matrix multiplication behavior when matrices have odd and even dimensions
+ * 
+ * @note Causes error 6 -> Result matrix contains a number bigger than 100
+ * @note Causes error 12 -> The number of rows in A is equal to the number of columns in B
+ * @note Causes error 14 -> The result matrix C has an even number of rows
+ * @note Causes error 20 -> Number of columns in matrix A is odd
+ */
+TEST(AlgebraicMultiplyMatrices, OddEven_1_5_3)
+{
+    std::vector<std::vector<int>> A = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+
+    std::vector<std::vector<int>> B = {
+        {7, 8},
+        {9, 10},
+        {11, 12}
+    };
+
+    std::vector<std::vector<int>> C(2, std::vector<int>(2, 0));
+    std::vector<std::vector<int>> expected = {
+        {58, 64},
+        {139, 154}
+    };
+
+    multiplyMatrices(A, B, C, 2, 3, 2);
+    ASSERT_EQ(C, expected) << "Matrix multiplication test failed";
+}
+
+/**
+ * @brief Tests matrix multiplication behavior when matrices have odd dimensions
+ * 
+ * @note Causes error 2 -> Matrix A contains the number 7
+ * @note Causes error 6 -> Result matrix contains a number bigger than 100
+ * @note Causes error 12 -> The number of rows in A is equal to the number of columns in B
+ * @note Causes error 18 -> Matrix A is a square matrix
+ * @note Causes error 20 -> Number of columns in matrix A is odd
+ */
+TEST(AlgebraicMultiplyMatrices, OddOdd_1_5_4)
+{
+    std::vector<std::vector<int>> A = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    std::vector<std::vector<int>> B = {
+        {10, 11, 12},
+        {13, 14, 15},
+        {16, 17, 18}
+    };
+
+    std::vector<std::vector<int>> C(3, std::vector<int>(3, 0));
+    std::vector<std::vector<int>> expected = {
+        {84, 90, 96},
+        {201, 216, 231},
+        {318, 342, 366}
+    };
+
+    multiplyMatrices(A, B, C, 3, 3, 3);
+    ASSERT_EQ(C, expected) << "Matrix multiplication test failed";
+}
+
+/**
+ * @brief Tests that the resulting matrix has the number of rows of A and the number of columns of B,
+ * which means that the method does not have any side effects other than populating the result matrix.
+ * 
+ * @note Expected behaviour is that the resulting matrix has the number of rows of A and the number of columns of B.
+ * 
+ * @note Causes error 1 -> Element-wise multiplication of ones detected
+ * @note Causes error 4 -> Matrix B contains the number 3
+ * @note Causes error 6 -> Result matrix contains a number bigger than 100
+ * @note Causes error 7 -> Result matrix contains a number between 11 and 20
+ * @note Causes error 13 -> The first element of matrix A is equal to the first element of matrix B
+ * @note Causes error 16 -> Matrix B contains the number 6
+ * @note Causes error 20 -> Number of columns in matrix A is odd 
+ */
+TEST(AlgebraicMultiplyMatrices, CorrectRowsAndCols_ExpectCorrect_1_6)
+{
+    std::vector<std::vector<int>> A = {
+        {1, 2, 3, 4, 5},
+        {1, 2, 3, 4, 5},
+        {1, 2, 3, 4, 5},
+        {1, 2, 3, 4, 5},
+        {1, 2, 3, 4, 5},
+        {1, 2, 3, 4, 5},
+        {1, 2, 3, 4, 5}
+    };
+
+    std::vector<std::vector<int>> B = {
+        {1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    };
+
+    std::vector<std::vector<int>> C (7, std::vector<int>(10, 0));
+    multiplyMatrices(A, B, C, 7, 5, 10);
+
+    ASSERT_EQ(C.size(), A.size()) << "The number of rows in the resulting matrix should be equal to the number of rows in A";
+    ASSERT_EQ(C[0].size(), B[0].size()) << "The number of columns in the resulting matrix should be equal to the number of columns in B";
+
+}
+
+/**
+ * @brief Tests that two commuting matrices actually commute.
+ * 
+ * @note Expected behaviour is that the matrices commute.
+ * 
+ * @note Causes error 3 -> Matrix A contains a negative number
+ * @note Causes error 4 -> Matrix B contains the number 3
+ * @note Causes error 5 -> Matrix B contains a negative number
+ * @note Causes error 7 -> Result matrix contains a number between 11 and 20
+ * @note Causes error 8 -> Result matrix contains zero
+ * @note Causes error 12 -> The number of rows in A is equal to the number of columns in B
+ * @note Causes error 14 -> The result matrix C has an even number of rows
+ * @note Causes error 18 -> Matrix A is a square matrix
+ * 
+ */
+TEST(AlgebraicMultiplyMatrices, Commutation_ExpectedCommutative_1_7)
+{
+    std::vector<std::vector<int>> A = {
+        {1, 2},
+        {0, 3}
+    };
+
+    std::vector<std::vector<int>> B = {
+        {4, -2},
+        {0, 1}
+    };
+
+    std::vector<std::vector<int>> C1(2, std::vector<int>(2, 0));
+    std::vector<std::vector<int>> C2(2, std::vector<int>(2, 0));
+
+    multiplyMatrices(A, B, C1, 2, 2, 2);
+    multiplyMatrices(B, A, C2, 2, 2, 2);
+    
+    ASSERT_EQ(C1, C2) << "The matrices are expected to commute";
+}
 
 /**
  * @brief Entry point for test execution.
