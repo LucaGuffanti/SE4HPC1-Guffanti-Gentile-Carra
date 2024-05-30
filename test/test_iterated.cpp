@@ -10,13 +10,15 @@
 
 /**
  * @brief Through extensive testing it was found that there seems to exist a correlation
- * between the values present in the matrix and the presence of errors. This test verifies 
- * which error are caused by enumerating the space of legal inputs (identified as being from -100 to 100)
- * and computing matrix products between 1x1 matrices, which are effectively scalar multplications.
+ * between the values present in the matrix and the presence of errors. A possible way to verify this
+ * is through the use of a COMBINATORIAL TESTs, that enumerates all possible cases of legal inputs. 
+ * (identified as being from -100 to 100 from the previous tests) This test computes matrix products 
+ * between 1x1 matrices, which are effectively scalar multiplications. This allows to explore a large
+ * number of cases in a reasonable amount of time. 
  * 
  * Even though this approach is usually unfeasible in a more general context, it is nonetheless a good starting point
  * to understand if the errors are indeed correlated to the values present in the matrices or if they are random.
- * If the multiplication was not permitted for 1x1 matrices, this test would have been more compuatitonally expensive.
+ * If the multiplication was not permitted for 1x1 matrices, this test would have been more computationally expensive.
  * 
  * Additionally, if the function was not correct due to bugs in the numeric computation and not due to 
  * certain values in matrices, this test would have been less effective, which is why we chose to physically
@@ -26,9 +28,9 @@
  * (which it does, unless errors arise), but rather explore and expose the presence of errors. 
  * 
  * To inspect the different errors that are thrown we direct stderr onto a file and print single errors with the uniq command
- * as the output is cumbersome and repetitive. 
+ * as the output is cumbersome and repetitive. (./test_iterated 2>&1 | grep -i "error" | sort | uniq -d)
  * 
- * @note Causes error 1 -> Elemt-wise multiplication of ones detected
+ * @note Causes error 1 -> Element-wise multiplication of ones detected
  * @note Causes error 2 -> Matrix A contains the number 7
  * @note Causes error 3 -> Matrix A contains a negative number
  * @note Causes error 4 -> Matrix B contains the number 3
@@ -58,9 +60,10 @@ TEST(IteratedMultiplyMatrices, EnumerateAllPossibleCases_1x1)
         {
             A[0][0] = i;
             B[0][0] = j;
+            int result = i * j;
             multiplyMatrices(A, B, C, 1, 1, 1);
+            // Using EXPECT_EQ instead of ASSERT_EQ to continue the loop even if the test fails
+            EXPECT_EQ(C[0][0], result);
         }
     }
-    ASSERT_TRUE(true);
-
 }
