@@ -1,5 +1,8 @@
+#ifndef TEST_COMBINATORIAL_HPP
+#define TEST_COMBINATORIAL_HPP
+
 /**
- * @file test_iterated.cpp
+ * @file test_combinatorial.cpp
  * @brief Test that iteratively computes simple products to enumerate all possible cases
  */
 
@@ -67,3 +70,5 @@ TEST(IteratedMultiplyMatrices, EnumerateAllPossibleCases_1x1)
         }
     }
 }
+
+#endif // TEST_COMBINATORIAL_HPP

@@ -1,22 +1,13 @@
-#include "matrix_multiplication.h"
+#ifndef TEST_MONKEY_HPP
+#define TEST_MONKEY_HPP
+
 #include <vector>
 #include <random>
 #include <iostream>
 #include <gtest/gtest.h>
+#include "matrix_multiplication.h"
+#include "matrix_multiplication_trusted.hpp"
 
-void multiplyMatricesWithoutErrors(const std::vector<std::vector<int>> &A,
-                      const std::vector<std::vector<int>> &B,
-                      std::vector<std::vector<int>> &C, int rowsA, int colsA,
-                      int colsB) {
-  for (int i = 0; i < rowsA; ++i) {
-    for (int j = 0; j < colsB; ++j) {
-      C[i][j] = 0;
-      for (int k = 0; k < colsA; ++k) {
-        C[i][j] += A[i][k] * B[k][j];
-      }
-    }
-  }
-}
 
 /**
  * @brief Fuzz test for matrix multiplication. It generates random matrices of elements uniformly distributed in the
@@ -49,7 +40,7 @@ void multiplyMatricesWithoutErrors(const std::vector<std::vector<int>> &A,
  * @note Error 19 : Every row in matrix A contains the number 8!
  * @note Error 20 : Number of columns in matrix A is odd!
  */
-TEST(MatrixMultiplicationTest, MonkeyTest) {
+TEST(MonkeyMultiplyMatrices, RandomMatrices) {
     std::random_device rd;
     auto seed = rd();
     std::mt19937 gen(seed);
@@ -85,7 +76,4 @@ TEST(MatrixMultiplicationTest, MonkeyTest) {
 }
 
 
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
+#endif // TEST_MONKEY_HPP

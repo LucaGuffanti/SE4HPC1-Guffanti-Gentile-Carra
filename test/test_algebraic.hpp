@@ -1,3 +1,6 @@
+#ifndef TEST_ALGEBRAIC_HPP
+#define TEST_ALGEBRAIC_HPP
+
 /**
  * @file test_algebraic.cpp
  * @brief Test cases that verify the consistency of algebraic properties for the provided matrix
@@ -373,10 +376,4 @@ TEST(AlgebraicMultiplyMatrices, Commutation_ExpectedCommutative_1_7)
     ASSERT_EQ(C1, C2) << "The matrices are expected to commute";
 }
 
-/**
- * @brief Entry point for test execution.
- */
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
+#endif // TEST_ALGEBRAIC_HPP

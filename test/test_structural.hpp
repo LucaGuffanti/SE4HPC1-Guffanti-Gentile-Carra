@@ -1,3 +1,6 @@
+#ifndef TEST_STRUCTURAL_HPP
+#define TEST_STRUCTURAL_HPP
+
 /**
  * @file structural.cpp
  * @brief Test cases that verify that the function multiplyMatrices correctly handles wrong inputs and
@@ -14,21 +17,7 @@
 #include <iostream>
 #include <vector>
 #include <gtest/gtest.h>
-
-
-void multiplyMatricesWithoutErrors(const std::vector<std::vector<int>> &A,
-                      const std::vector<std::vector<int>> &B,
-                      std::vector<std::vector<int>> &C, int rowsA, int colsA,
-                      int colsB) {
-  for (int i = 0; i < rowsA; ++i) {
-    for (int j = 0; j < colsB; ++j) {
-      C[i][j] = 0;
-      for (int k = 0; k < colsA; ++k) {
-        C[i][j] += A[i][k] * B[k][j];
-      }
-    }
-  }
-}
+#include "matrix_multiplication_trusted.hpp"
 
 /**
 * @brief Test case for matrix multiplication with non-coherent parameters.
@@ -47,7 +36,7 @@ void multiplyMatricesWithoutErrors(const std::vector<std::vector<int>> &A,
 * @note The test shows that the function does not handle the case when 
 * the sizes of the matrices are not coherent with the parameters passed to the function.
 */
-TEST(AlgebraicMultiplyMatrices, NonCoherentSizes) {
+TEST(StructuralMultiplyMatrices, NonCoherentSizes_2_1) {
     int rowsA = 2;
     int colsA = 3;
     int colsB = 2;
@@ -88,7 +77,7 @@ TEST(AlgebraicMultiplyMatrices, NonCoherentSizes) {
  * @note The test shows that the function does not handle the case when the sizes of
  * the matrices are negative.
  */
-TEST(AlgebraicMultiplyMatrices, NegativeSizes) {
+TEST(StructuralMultiplyMatrices, NegativeSizes_2_2) {
     int rowsA = 2;
     int colsA = 3;
     int colsB = 2;
@@ -129,7 +118,7 @@ TEST(AlgebraicMultiplyMatrices, NegativeSizes) {
  * @note Error 17 -> Result matrix C contains the number 17!
  * @note Error 18 -> Matrix A is a square matrix!
  */
-TEST(AlgebraicMultiplyMatrices, NumericalRange) {
+TEST(StructuralMultiplyMatrices, NumericalRange_2_4) {
     int rowsA = 2;
     int colsA = 2;
     int colsB = 2;
@@ -173,10 +162,4 @@ TEST(AlgebraicMultiplyMatrices, NumericalRange) {
     }
 }
 
-/**
- * @brief Entry point for test execution.
- */
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
+#endif // TEST_STRUCTURAL_HPP
