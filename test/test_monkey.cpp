@@ -19,7 +19,7 @@ void multiplyMatricesWithoutErrors(const std::vector<std::vector<int>> &A,
 }
 
 /**
- * @brief Fuzzy test for matrix multiplication. It generates random matrices of elements uniformly distributed in the
+ * @brief Fuzz test for matrix multiplication. It generates random matrices of elements uniformly distributed in the
  * range [1, 10] and checks if the product of the matrices is correct.
  * @note The test chooses two random matrices A and B and computes their product. It then compares the result with the 
  * value obtained by using a trusted method for calculating the matrix product: "multiplyMatricesWithoutErrors".
