@@ -12,11 +12,13 @@ add_executable(test_multiplication test/test_matrix_multiplication.cpp)
 add_executable(test_structural test/test_structural.cpp)
 add_executable(test_algebraic test/test_algebraic.cpp)
 add_executable(test_combinatorial test/test_combinatorial.cpp)
+add_executable(test_monkey test/test_monkey.cpp)
 
 target_link_libraries(test_multiplication gtest gtest_main ${CMAKE_SOURCE_DIR}/lib/libmatrix_multiplication_with_errors.a)
 target_link_libraries(test_structural gtest gtest_main ${CMAKE_SOURCE_DIR}/lib/libmatrix_multiplication_with_errors.a)
 target_link_libraries(test_algebraic gtest gtest_main ${CMAKE_SOURCE_DIR}/lib/libmatrix_multiplication_with_errors.a)
 target_link_libraries(test_combinatorial gtest gtest_main ${CMAKE_SOURCE_DIR}/lib/libmatrix_multiplication_with_errors.a)
+target_link_libraries(test_monkey gtest gtest_main ${CMAKE_SOURCE_DIR}/lib/libmatrix_multiplication_with_errors.a)
 
 
 enable_testing()
@@ -27,4 +29,5 @@ gtest_discover_tests(test_multiplication)
 gtest_discover_tests(test_structural)
 gtest_discover_tests(test_algebraic)
 gtest_discover_tests(test_combinatorial)
+gtest_discover_tests(test_monkey)
 
