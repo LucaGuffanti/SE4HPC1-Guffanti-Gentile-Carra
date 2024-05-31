@@ -36,7 +36,7 @@
  * @note Causes error 18 -> Matrix A is a square matrix
  * 
  */
-TEST(AlgebraicMultiplyMatrices, ZeroMatrices_ExpectedAllZero_1_1)
+TEST(AlgebraicTests, ZeroMatrices_ExpectedAllZero_1_1)
 {
     std::vector<std::vector<int>> A = {
         {0, 0},
@@ -66,7 +66,7 @@ TEST(AlgebraicMultiplyMatrices, ZeroMatrices_ExpectedAllZero_1_1)
  * @note Causes error 18 -> Matrix A is a square matrix
  * 
  */
-TEST(AlgebraicMultiplyMatrices, IdentityMatrices_ExpectedOriginalMatrix_1_2)
+TEST(AlgebraicTests, IdentityMatrices_ExpectedOriginalMatrix_1_2)
 {
     std::vector<std::vector<int>> A = {
         {1, 2},
@@ -99,7 +99,7 @@ TEST(AlgebraicMultiplyMatrices, IdentityMatrices_ExpectedOriginalMatrix_1_2)
  * @note Causes error 14 -> The result matrix C has an even number of rows
  * @note Causes error 20 -> Number of columns in matrix A is odd
  */
-TEST(AlgebraicMultiplyMatrices, Associativity_ExpectedAssociative_1_3)
+TEST(AlgebraicTests, Associativity_ExpectedAssociative_1_3)
 {
     std::vector<std::vector<int>> A = {
         {1, 2, 3},
@@ -155,7 +155,7 @@ TEST(AlgebraicMultiplyMatrices, Associativity_ExpectedAssociative_1_3)
  * @note Causes Error 20 -> Number of columns in matrix A is odd
  * 
  */
-TEST(AlgebraicMultiplyMatrices, NotPermittedMultiplication_ExpectedUnknownBehavior_1_4)
+TEST(AlgebraicTests, NotPermittedMultiplication_ExpectedUnknownBehavior_1_4)
 {
     std::vector<std::vector<int>> A = {
         {17}
@@ -180,7 +180,7 @@ TEST(AlgebraicMultiplyMatrices, NotPermittedMultiplication_ExpectedUnknownBehavi
  * @note Causes error 18 -> Matrix A is a square matrix
  * 
  */
-TEST(AlgebraicMultiplyMatrices, EvenEven_1_5_1)
+TEST(AlgebraicTests, EvenEven_1_5_1)
 {
     std::vector<std::vector<int>> A = {
         {1, 2},
@@ -210,7 +210,7 @@ TEST(AlgebraicMultiplyMatrices, EvenEven_1_5_1)
  * @note Causes error 16 -> Matrix B contains the number 6
  * @note Causes error 18 -> Matrix A is a square matrix
  */
-TEST(AlgebraicMultiplyMatrices, EvenOdd_1_5_2)
+TEST(AlgebraicTests, EvenOdd_1_5_2)
 {
     std::vector<std::vector<int>> A = {
         {1, 2},
@@ -241,7 +241,7 @@ TEST(AlgebraicMultiplyMatrices, EvenOdd_1_5_2)
  * @note Causes error 14 -> The result matrix C has an even number of rows
  * @note Causes error 20 -> Number of columns in matrix A is odd
  */
-TEST(AlgebraicMultiplyMatrices, OddEven_1_5_3)
+TEST(AlgebraicTests, OddEven_1_5_3)
 {
     std::vector<std::vector<int>> A = {
         {1, 2, 3},
@@ -273,7 +273,7 @@ TEST(AlgebraicMultiplyMatrices, OddEven_1_5_3)
  * @note Causes error 18 -> Matrix A is a square matrix
  * @note Causes error 20 -> Number of columns in matrix A is odd
  */
-TEST(AlgebraicMultiplyMatrices, OddOdd_1_5_4)
+TEST(AlgebraicTests, OddOdd_1_5_4)
 {
     std::vector<std::vector<int>> A = {
         {1, 2, 3},
@@ -312,7 +312,7 @@ TEST(AlgebraicMultiplyMatrices, OddOdd_1_5_4)
  * @note Causes error 16 -> Matrix B contains the number 6
  * @note Causes error 20 -> Number of columns in matrix A is odd 
  */
-TEST(AlgebraicMultiplyMatrices, CorrectRowsAndCols_ExpectCorrect_1_6)
+TEST(AlgebraicTests, CorrectRowsAndCols_ExpectCorrect_1_6)
 {
     std::vector<std::vector<int>> A = {
         {1, 2, 3, 4, 5},
@@ -355,7 +355,7 @@ TEST(AlgebraicMultiplyMatrices, CorrectRowsAndCols_ExpectCorrect_1_6)
  * @note Causes error 18 -> Matrix A is a square matrix
  * 
  */
-TEST(AlgebraicMultiplyMatrices, Commutation_ExpectedCommutative_1_7)
+TEST(AlgebraicTests, Commutation_ExpectedCommutative_1_7)
 {
     std::vector<std::vector<int>> A = {
         {1, 2},

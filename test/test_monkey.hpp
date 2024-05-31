@@ -40,7 +40,7 @@
  * @note Error 19 : Every row in matrix A contains the number 8!
  * @note Error 20 : Number of columns in matrix A is odd!
  */
-TEST(MonkeyMultiplyMatrices, RandomMatrices) {
+TEST(MonkeyTests, RandomMatrices) {
     std::random_device rd;
     auto seed = rd();
     std::mt19937 gen(seed);

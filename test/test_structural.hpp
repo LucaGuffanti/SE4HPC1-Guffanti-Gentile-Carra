@@ -36,7 +36,7 @@
 * @note The test shows that the function does not handle the case when 
 * the sizes of the matrices are not coherent with the parameters passed to the function.
 */
-TEST(StructuralMultiplyMatrices, NonCoherentSizes_2_1) {
+TEST(StructuralTests, NonCoherentSizes_2_1) {
     int rowsA = 2;
     int colsA = 3;
     int colsB = 2;
@@ -77,7 +77,7 @@ TEST(StructuralMultiplyMatrices, NonCoherentSizes_2_1) {
  * @note The test shows that the function does not handle the case when the sizes of
  * the matrices are negative.
  */
-TEST(StructuralMultiplyMatrices, NegativeSizes_2_2) {
+TEST(StructuralTests, NegativeSizes_2_2) {
     int rowsA = 2;
     int colsA = 3;
     int colsB = 2;
@@ -118,7 +118,7 @@ TEST(StructuralMultiplyMatrices, NegativeSizes_2_2) {
  * @note Error 17 -> Result matrix C contains the number 17!
  * @note Error 18 -> Matrix A is a square matrix!
  */
-TEST(StructuralMultiplyMatrices, NumericalRange_2_4) {
+TEST(StructuralTests, NumericalRange_2_4) {
     int rowsA = 2;
     int colsA = 2;
     int colsB = 2;

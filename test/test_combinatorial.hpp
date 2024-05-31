@@ -51,7 +51,7 @@
  * @note Causes error 19 -> Every row in matrix A contains the number 8
  * @note Causes error 20 -> Number of columns in matrix A is odd
  */
-TEST(IteratedMultiplyMatrices, EnumerateAllPossibleCases_1x1)
+TEST(CombinatorialTests, EnumerateAllPossibleCases_1x1)
 {
     std::vector<std::vector<int>> A = {{0}};
     std::vector<std::vector<int>> B = {{0}};
