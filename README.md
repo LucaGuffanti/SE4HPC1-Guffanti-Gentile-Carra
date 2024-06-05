@@ -7,11 +7,17 @@ void multiplyMatrices(const std::vector<std::vector<int>>& A, const std::vector<
 ```
 
 ## Principles
-The tests are developed following the principles of **black box testing**, **reproducibility**, and **orthogonality**. The tests are divided into four categories: 
+The tests are developed following this 3 fundamental principles:
+- **Black box testing**: the tests are developed without any knowledge of the implementation of the matrix multiplication function, only the signature of the function is known.
+- **Reproducibility**: the tests are developed in a way that they can be run multiple times and always return the same result, because when a test fails, the seed of the random number generator is returned.
+- **Orthogonality**: the tests are developed in a way that they are independent of each other, meaning that the failure of one test does not affect the other tests. Also, the tests cover as many different cases as possible.
+
+The tests are divided into four categories: 
 - `AlgebraicTests`: contains the tests the algebraic properties of the matrix multiplication function.
 - `StructuralTests`: contains the tests to verify that the function correctly handles wrong inputs and edge cases.
 - `CombinatorialTests`: enumerates a large set of possible inputs and verify that the function returns the correct output.
 - `MonkeyTests`: generates random inputs and verify that the function returns the correct output, returning the seed in case of failure. (for reproducibility)
+
 
 ## How to run the tests
 To run the the tests, run the following commands:
